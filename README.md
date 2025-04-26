@@ -27,4 +27,5 @@ MCP server for OpenAI image generation API. This makes AI agent can generate ima
    ```
 
 ## Available Tools
-- CreateImage : Creates an image given a prompt using https://platform.openai.com/docs/api-reference/images/create
+- CreateImage : Creates an image given a prompt. https://platform.openai.com/docs/api-reference/images/create
+- CreateImageEdit : Creates an edited or extended image given one or more source images and a prompt. https://platform.openai.com/docs/api-reference/images/createEdit
