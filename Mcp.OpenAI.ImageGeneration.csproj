@@ -6,11 +6,12 @@
     <RootNamespace>MCP_OpenAI_ImageGeneration</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>ae0eb41e-cd31-4fe2-bec6-7e7c06dec907</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.4" />
-    <PackageReference Include="ModelContextProtocol" Version="0.1.0-preview.10" />
+    <PackageReference Include="ModelContextProtocol" Version="0.1.0-preview.11" />
     <PackageReference Include="OpenAI" Version="2.1.0" />
   </ItemGroup>
 
