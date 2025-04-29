@@ -101,11 +101,11 @@ public static class OpenAITools
         }
     }
 
-    [McpServerTool, Description("Creates an edited or extended image given image and a prompt. You can edit or modify image by using this tool.")]
+    [McpServerTool, Description("Creates an edited or extended image given one or more source images and a prompt. You can edit or modify image by using this tool.")]
     public static async Task<string> CreateImageEdit(
         HttpClient httpClient,
-        [Description("The path of the image to edit. Must be a png, webp, or jpg file less than 25MB.")]
-        string inputPath,
+        [Description("The paths of source images to edit. Must be a png, webp, or jpg file less than 25MB.")]
+        string[] inputPaths,
         [Description("A text description of the desired image. The maximum length is 32000 characters.")]
         string prompt,
         [Description("The path of the generated image. Must be absolute path.")]
@@ -124,10 +124,13 @@ public static class OpenAITools
             
             using var postContent = new MultipartFormDataContent();
 
-            using var inputStream = new FileStream(inputPath, FileMode.Open);
-            using var maskStream = !string.IsNullOrEmpty(maskPath) ? new FileStream(maskPath, FileMode.Open) : null;
+            foreach (var inputPath in inputPaths)
+            {
+                var inputStream = new FileStream(inputPath, FileMode.Open);
+                postContent.Add(new StreamContent(inputStream), "image[]", Path.GetFileName(inputPath));
+            }
 
-            postContent.Add(new StreamContent(inputStream), "image", Path.GetFileName(inputPath));
+            using var maskStream = !string.IsNullOrEmpty(maskPath) ? new FileStream(maskPath, FileMode.Open) : null;
 
             if (maskStream != null)
             {
