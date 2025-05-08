@@ -42,7 +42,7 @@ public static class OpenAITools
         [Description("Allows to set transparency for the background of the generated image. Must be one of transparent, opaque or auto (default value). When auto is used, the model will automatically determine the best background for the image. If transparent, the output format needs to support transparency, so it should be set to either png (default value) or webp.")]
         string background = "auto",
         [Description("Control the content-moderation level for image. Must be either low for less (default value) restrictive filtering or auto.")]
-        string moderation = "less",
+        string moderation = "low",
         [Description("The compression level (0-100%) for the generated image. This parameter is only supported for the webp or jpeg output formats, and defaults to 100.")]
         int outputCompression = 100,
         [Description("The format in which the generated image is returned. Must be one of png, jpeg, or webp. Defaults to png.")]
